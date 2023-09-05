@@ -71,9 +71,19 @@ const LoginPage = () => {
       <SignInContainer>
         <div>
           <Brand>
-            <img src={sonyImageUrl} alt="sony" />
+            <div>
+              <img src={sonyImageUrl} alt="sony" />
+            </div>
           </Brand>
-          <img style={{ width: "100%" }} src={logoURL} alt="playstation" />
+          <Link
+            to="/"
+            style={{
+              textDecoration: "none",
+              width: "100%",
+            }}
+          >
+            <img style={{ width: "100%" }} src={logoURL} alt="playstation" />
+          </Link>
           <form onSubmit={handleSubmit}>
             <p>Sign in to PlayStation with one of your Sony accounts.</p>
             <input
@@ -178,7 +188,8 @@ const Brand = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  img {
+
+  & > div {
     width: 6rem;
   }
 `;

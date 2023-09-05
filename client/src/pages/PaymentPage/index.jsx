@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import {
   useStripe,
@@ -88,6 +88,18 @@ const PaymentPage = () => {
   return (
     <>
       <PaymentContainer>
+        <div style={{
+          display:"flex",
+          flexDirection:"column",
+          width:"100%",
+          maxWidth:"500px",
+          padding:"1rem 1rem 2rem",
+          gap:"0.3rem"
+        }}>
+          <h3>Order Id: {currentOrder?._id}</h3>
+          <span>Total Items: {currentOrder?.totalItems}</span>
+          <span>Total Amount: Rs{currentOrder?.totalAmount}</span>
+        </div>
         <PaymentForm onSubmit={handleSubmit}>
           <div>
             <label>Card Number</label>
@@ -118,6 +130,17 @@ const PaymentContainer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
+
+  h3{
+    font-size: 1.2rem;
+    font-weight: 600;
+  }
+
+  span{
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
 `;
 
 const PaymentForm = styled.form`
@@ -125,6 +148,24 @@ const PaymentForm = styled.form`
   width: 100%;
   max-width: 500px;
   padding: 1rem;
+
+  label{
+    font-size: 0.875rem;
+    color: #888888;
+    font-weight: 500;
+  }
+
+  button{
+    width: 100%;
+  padding: 0.7rem 0;
+  font-size: 1rem;
+  font-weight: 600;
+  background-color: #d63d00;
+  border: none;
+  color: #fff;
+  border-radius: 3rem;
+  margin: 1rem 0;
+  }
 `;
 
 const SCardNumberElement = styled(CardNumberElement)`
@@ -132,7 +173,7 @@ const SCardNumberElement = styled(CardNumberElement)`
   border: 2px solid #dcdcdc;
   border-radius: 0.4rem;
   background-color: #ffffff;
-  margin-top: 0.3rem;
+  margin: 0.3rem 0;
 `;
 
 const SCardExpiryElement = styled(CardExpiryElement)`
@@ -140,7 +181,7 @@ const SCardExpiryElement = styled(CardExpiryElement)`
   border: 2px solid #dcdcdc;
   border-radius: 0.4rem;
   background-color: #ffffff;
-  margin-top: 0.3rem;
+  margin: 0.3rem 0;
 `;
 
 const SCardCvcElement = styled(CardCvcElement)`
@@ -148,7 +189,7 @@ const SCardCvcElement = styled(CardCvcElement)`
   border: 2px solid #dcdcdc;
   border-radius: 0.4rem;
   background-color: #ffffff;
-  margin-top: 0.3rem;
+  margin: 0.3rem 0;
 `;
 
 export default PaymentPage;
